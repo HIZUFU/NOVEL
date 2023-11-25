@@ -1,4 +1,4 @@
-Mon Nov 13 20:15:17 2023
+Sat Nov 25 12:39:19 2023
 Windows-10-10.0.22631
 Ren'Py 8.1.3.23091805
  
@@ -44,12 +44,5 @@ Vendor: "b'ATI Technologies Inc.'"
 Renderer: b'AMD Radeon RX 6950 XT'
 Version: b'4.6.0 Compatibility Profile Context 23.10.2.231013'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Screen sizes: virtual=(1920, 1080) physical=(2560, 1009) drawable=(2560, 1009)
 Maximum texture size: 4096x4096
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.01s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s

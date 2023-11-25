@@ -10,25 +10,16 @@ define CEO = Character('СЕО', color="#c8ffc8")
 define Techburg = False
 define Mundwish = False
 define DCProjectBread = False
-#Выбор ответа на первый вопрос от чела из маршрутки
-define choise1 = False
-define choise2 = False
-define choise3 = False
 
-#выбор второй вопрос
-define ch1 = False
-define ch2 = False
-define ch3 = False
-#Третий вопрос
-define chi1 = False
-define chi2 = False
-define chi3 = False
+define musnorm = "audio/chelol.ogg"
+play music musnorm
 #init:
 # $ left = Position(xalign=0.2, yaling=1.1)
 # @ для одного спрайта сменить перса
 label start:
 
-    scene bus2
+    play music musnorm
+    scene urfu
 
     gg "Наконец-то я закончил этот универ." 
     
@@ -42,7 +33,7 @@ label start:
     
     gg "Ладно, сейчас сяду на автобус, поеду домой, там разберусь."
 
-    scene bus
+    scene bus 2
 
     with fade
 
@@ -56,7 +47,7 @@ label start:
 
 label scene2:
 
-    scene bus
+    scene bus 2
 
     menu:
         "Кого же из них выбрать?"
@@ -72,7 +63,7 @@ label scene2:
 
 label scene4:
 
-    scene bus
+    scene bus 2
 
     chel "Здравствуйте! Вижу, что вас чрезвычайно сильно интересует программирование."
 
@@ -87,10 +78,10 @@ label scene4:
     gg "Чем занимаетесь?"
     
     chel "Я работаю тестировщиком в крупной компании"
-    if Techburg:
+    if Techburg == True:
 
         chel "Techburg и сейчас как раз возвращаюсь из отпуска."
-    elif Mundwish:
+    elif Mundwish == True:
 
         chel "Mundwish и сейчас как раз возвращаюсь из отпуска."
     else:
@@ -123,91 +114,87 @@ label scene4:
         "Итак первый вопрос. Что такое переменная, и как она используется в программировании?"
 
         "Переменная - это контейнер, который хранит константные значения.":
-            $ choise1 == True
+            chel "Неверно!"
 
         "Переменная - это место в памяти, где можно хранить и изменять данные.":
-            $ choise2 == True
+            chel "Неверно!"
 
         "Переменная - это функция в программе.":
-            $ choise3 == True
-    if choise3 == True:
-        chel "верно."
-        jump secquestion
-    else:
-        chel "Неверно!"
-        chel "Правильный ответ: Переменная - это место в памяти, где можно хранить и изменять данные."
-        jump secquestion
+            "Верно. Идем дальше!"
+
+    jump secquestion
     
 
     return
 
 label secquestion:
 
-    scene bus
+    scene bus 2
 
     chel "Следующий вопрос: Что такое beta-тестирование игры, и зачем оно проводится?"
     menu:
         "Beta-тестирование - это проверка игры на баги и ошибки перед её выпуском, проводимая небольшой группой тестеров. Это позволяет выявить проблемы, которые могли быть упущены внутренним тестированием.":
-            $ ch1 == True
+            chel "Верно. Идем дальше!"
             
         "Beta-тестирование - это релиз игры в ограниченном регионе для привлечения внимания к игре.":
-            $ ch2 == True
+            chel "Неверно."
         
         "Beta-тестирование - это только второй этап разработки, не имеющий отношения к проверке игры перед выпуском.":
-            $ ch3 == True
-    if ch1 == True:
-        chel "Верно. Идем дальше!"
-        jump thrquestion
-    else:
-        chel "Неверно."
-        chel "Правильный ответ: Beta-тестирование - это проверка игры на баги и ошибки перед её выпуском, проводимая небольшой группой тестеров. Это позволяет выявить проблемы, которые могли быть упущены внутренним тестированием."
-        jump thrquestion
+            chel "Неверно."
+    jump thrquestion
+
     return
 label thrquestion:
 
-    scene bus
+    scene bus 2
 
     chel "Следующий вопрос"
 
     chel "Почему важно оптимизировать игровой код для высокой производительности?"
     menu:
         "Оптимизация кода обеспечивает более высокую производительность игры, плавное воспроизведение и лучший пользовательский опыт.":
-            $ chi1 == True
+            chel "Верно."
         "Оптимизация кода не влияет на производительность игры и не является приоритетом.":
-            $ chi2 == True
+            chel "Неверно."
+            chel "Правильный ответ: Оптимизация кода обеспечивает более высокую производительность игры, плавное воспроизведение и лучший пользовательский опыт."
+        
         "Оптимизация кода важна только для игр с высоким бюджетом.":
-            $ chi3 == True
-    if chi1 == True:
-        chel "Верно."
-        jump perexod
-    else:
-        chel "Неверно."
-        chel "Правильный ответ: Оптимизация кода обеспечивает более высокую производительность игры, плавное воспроизведение и лучший пользовательский опыт."
-        jump perexod
+            chel "Неверно."
+            chel "Правильный ответ: Оптимизация кода обеспечивает более высокую производительность игры, плавное воспроизведение и лучший пользовательский опыт."
+    jump perexod
 
     return
 
 label perexod:
 
     if Techburg or Mundwish:
-        jump poezd
-    elif DCProjectBread:
-        jump airport
+        jump perexod2
+    else:
+        jump perexod3
     
     return
 
+label perexod2:
+
+    scene trainstation 1
+    jump poezd
+    return
 label poezd:
 
-    scene train
+    scene train 1
 
     dev "Уважаемые пассажиры наш поезд прибыл в Москву."
     jump office
 
     return
+label perexod3:
 
+    scene plane 1
+    jump airport
+    return
 label airport:
 
-    scene hole
+    scene airport 1
 
     dev "наш самолёт совершил посадку в Варшаве."
 
@@ -220,7 +207,7 @@ label airport:
 
 label office:
 
-    scene office
+    scene zal
 
     with fade
 
