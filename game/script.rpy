@@ -13,10 +13,12 @@ define Techburg = False
 define Mundwish = False
 define DCProjectBread = False
 
+define ababka = False
 define gui.text_color = '#ffffff'
 
 define musnorm = "audio/chelol.ogg"
 play music musnorm
+define bus = "audio/BusStartup.mp3"
 #init:
 # $ left = Position(xalign=0.2, yaling=1.1)
 # @ для одного спрайта сменить перса
@@ -32,25 +34,52 @@ label start:
     
     gg "Я всегда мечтал работать в одной из крупных игровых компаний."
 
-    gg "Как раз недавно читал, что трём таким сейчас нужны работники.
-    Кажется они назывались Techburg, Mundwish и DC Project Bread."
+    gg "Правда не знаю, получиться ли у меня."
     
     gg "Ладно, сейчас сяду на автобус, поеду домой, там разберусь."
+
+    gg "Ухх, успел, да ещё и место свободное досталось. Недавно видел, что трём компаниям сейчас требуются дизайнеры. \n
+    Кажется они назывались Techburg, Mundwish и DC Project Bread."
+
+    gg "Ага, вот и они... Интересные компании."
+    
+    gg "Какую же из них выбрать? Наверное…"
 
     scene bus 2
 
     with fade
-
+    play music bus
 
     show babka
     
-    babkaa "Можешь уступить мне место?"
+    menu:
+        "Можешь уступить мне место?"
     
-    gg "Да, садитесь"
+        "Да, садитесь":
+            jump scne21
+            $ ababka = True
 
-    jump scene2
+        "нет я хочу сидеть":
+            jump scene2
 
     return
+
+label scne21:
+
+    scene 2phone 1
+
+    menu:
+        "Кого же из них выбрать?"
+
+        "Techburg":
+            $ Techburg = True
+        "Mundwish":
+            $ Mundwish = True
+        "DC Project Bread":
+            $ DCProjectBread = True
+    jump scene41
+    return
+
 
 label scene2:
 
